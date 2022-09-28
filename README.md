@@ -1,4 +1,4 @@
-# ROSALINE--GC
+# ROSALIND--GC
 PROBLEM: Computing GC Content
 
 DNA strings must be labeled when they are consolidated into a database. A commonly used method of string labeling is called FASTA format. In this format, the string is introduced by a line that begins with '>', followed by some labeling information. Subsequent lines contain the string itself; the first line to begin with '>' indicates the label of the next string.
