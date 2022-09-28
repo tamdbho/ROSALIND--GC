@@ -1,0 +1,45 @@
+def GC_content (dna):
+    length = len(dna)
+    G_count = dna.upper().count('G')
+    C_count = dna.upper().count('C')
+    GC_percentage = (G_count + C_count)/length *100
+    if GC_percentage - 0.001 < GC_percentage < GC_percentage + 0.001:
+        return round(GC_percentage, 6)
+
+import re
+
+# file = open('') - Enter directory
+file_string = file.read().replace('\n','')
+
+gene_name = re.findall(r'>Rosalind_....',file_string)
+print(gene_name)
+gene_name_position = []
+for position in gene_name:
+    gene_name_index = file_string.find(position)
+    gene_name_position.append(gene_name_index)
+
+start_position = []
+stop_position = []
+gene_pos_dict = {}
+for position in gene_name_position:
+    start = position + 14
+    start_position.append(start)
+
+stop_position = gene_name_position [1:]
+stop_position.append(len(file_string))
+
+gene = []
+for (strt,stp) in zip(start_position,stop_position):
+    seq = file_string [strt:stp]
+    gene.append(seq)
+
+fasta= {}
+for (name,seq) in zip(gene_name,gene):
+    fasta [name] = seq
+calculated_GC = []
+for i in fasta.keys():
+    calculate_GC = GC_content(fasta[i])
+    calculated_GC.append(calculate_GC)
+    if calculate_GC == max(calculated_GC):
+        print(i)
+        print(calculate_GC)
